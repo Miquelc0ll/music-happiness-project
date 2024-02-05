@@ -1,4 +1,13 @@
 # A Data Analytics Approach to Understanding the Link Between Music and Country Happiness
 
 *Link to the notebook:* [Python Notebook](music-happiness.ipynb)
-Data analytics project using python willing to find relations between the happiness of a country (based on the World Happiness report) and the music they listen to (Spotify's Top-50 playlist for each country).
+
+### Abstract
+By leveraging Python-based data analytics, this study endeavors to decipher the interplay between a country's happiness levels and their musical preferences. The study spans October 2023 to January 2024. It compares audio features such as 'danceability', 'duration' or 'positiveness' between countries with lower and higher Happiness Score.
+
+### Datasets used
+- **Music features:** For the music features I 
+- **Happiness:**
+
+#### Others:
+[Link to the dataset](https://gist.github.com/tadast/8827699)
