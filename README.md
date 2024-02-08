@@ -148,6 +148,7 @@ This song's acousticness is 0.996. It was published the 15/06/2023 and was in th
 <img src="https://github.com/Miquelc0ll/music-happiness-project/assets/84017268/0d741000-c5b8-497e-8063-98d755ccc246" alt="ab67616d00001e02113bb5ff902822d6fc3db0e7" width="150px">
 
 Poesia Acústica 15 - Pineapple StormTv, Salve Malak, Mc Poze do Rodo, Luiz Lins, MC Hariel, Azzy, JayA Luuck, Oruam, Slipmami, MC Cabelinho
+
 This song's duration is 11:20. It was published the 24/12/2023 and has been in Portugal's Top-50 since then (2024 weeks 1, 2, 3 and 4).
 
 #### The most energetic song
