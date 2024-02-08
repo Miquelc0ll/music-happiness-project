@@ -1,6 +1,6 @@
 # A Data Analytics Approach to Understanding the Link Between Music and Country Happiness
 
-*Link to the notebook:* [Python Notebook](music-happiness.ipynb) (Download or open in Github.dev to see the full notebook).
+*Link to the notebook:* [Python Notebook](music-happiness-project.ipynb) (Download or open in Github.dev to see the full notebook).
 
 [Miquel Coll](https://miqelcoll.me) - MSc. Data Science Student
 
