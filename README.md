@@ -20,6 +20,9 @@ You can find all countries available in the following list (using the [ISO 3166-
 - [NetworkX Graph Documentation](https://networkx.org/documentation/stable/reference/)
 - [Pandas documentation](https://pandas.pydata.org/docs/user_guide/index.html)
 
+
+
+
 ## Preprocessing
 ### Preparing the data
 To start with the project, I had to prepare the data. This is the first step into a good analysis. As mentioned before, I had 2 main datasets: *df_aufe* (for audio features and songs) and *df_hpy* (the Happiness Report). Both dataframe had to be joined into a bigger one, called *df_proj*, but before merging them I had to prepare the available data.
@@ -41,6 +44,8 @@ As we see in the boxplots, there were some outlier values in each column. This v
 
 #### Outlier finding method: IQR
 To determine which values are outliers we are using the 1.5 * IQR method. This method says that a data point is an outlier if it is more than 1.5 ⋅ IQR ‍ above the q3 or below the q1. For example: Let's say we have an outlier in the positiveness column from a song of the Spanish chart. It will be replaced by the positiveness mean of Spanish songs.
+
+
 
 
 ## Analysis and data visualisations
@@ -74,6 +79,7 @@ All the green small nodes are the songs, and the coloured nodes are the countrie
 
 ![Happiness Score](https://github.com/Miquelc0ll/music-happiness-project/assets/84017268/0d629a56-966c-4529-9736-bcc999498ba4)
 
+#### Finding communities in the graph
 The graph is quite clear visually, but may not be optimal to find conclusions. There are some countries close to their neighbours and others close to countries with same language / religion. To find the real communities of the graph I used the *greedy_modularity_communities* function from NetworkX. I got 20 different communities, but 12 of them were lonely groups with just one country, so I ignored them and focused on communities with at least 2 countries. Finally, the communities from the graph were the following:
 - 1: 'DEU', 'SAU', 'AUT', 'AUS', 'BEL', 'CAN', 'ARE', 'SVK', 'USA', 'EST', 'PHL', 'IDN', 'IRL', 'LVA', 'LTU', 'LUX', 'MYS', 'NZL', 'GBR', 'CHE', 'SGP'
 - 2: 'ARG', 'CHL', 'COL', 'CRI', 'ECU', 'SLV', 'ESP', 'GTM', 'HND', 'DOM', 'MEX', 'NIC', 'PAN', 'PRY', 'PER', 'URY', 'VEN', 'BOL'
@@ -94,7 +100,7 @@ I plotted the mean happiness score of every community to find the happiest and t
 
 ![mean-happiness-community](https://github.com/Miquelc0ll/music-happiness-project/assets/84017268/3cea49c4-9979-4e9e-8bb7-e6bddfdbe9b1)
 
-Sorting the communities by the happiness score we get the following result:
+Sorting the communities by the mean happiness score we get the following ranking:
 - 5 (7.35): 'NOR', 'SWE'
 - 1 (6.63): 'DEU', 'SAU', 'AUT', 'AUS', 'BEL', 'CAN', 'ARE', 'SVK', 'USA', 'EST', 'PHL', 'IDN', 'IRL', 'LVA', 'LTU', 'LUX', 'MYS', 'NZL', 'GBR', 'CHE', 'SGP'
 - 7 (6.04): 'BRA', 'PRT'
@@ -102,8 +108,72 @@ Sorting the communities by the happiness score we get the following result:
 - 3 (5.80): 'KOR', 'HKG', 'JPN', 'THA', 'TWN', 'VNM'
 - 4 (5.60): 'BLR', 'KAZ', 'UKR'
 - 6 (5.12): 'NGA', 'ZAF'
+- 8 (4.29): 'IND', 'PAK'
+
+#### Comparing the 2 highest and lowest commmunities based on Happiness Score
+To end the project, I decided to get the 2 communities with higher Happiness value and the 2 communities with lower Happiness value and compare them. These communities were 1 and 5 (High Happiness) and 6 and 8 (Low Happiness). In the following bar plot, the blue bars correspond to the Higher Happiness Score, and the Red bars to the lower. All values are scaled to fit correctly in the plot.
+
+![comparison-highest-lowest-happiness-communities](https://github.com/Miquelc0ll/music-happiness-project/assets/84017268/20b45a6c-5d9a-40e4-8144-fdfdf0696745)
 
 
 
 
+## Conclusions
+There are some remarkable differences between the 2 groups. The values found in the plot confirm what was stated before with the correlation matrix. The higher happiness community track boast a higher popularity score, while the lower happiness group excels in danceability by 8 points. Acousticness shows no apparent discrepancy. However, the lower happiness tracks tend to be slightly longer. Energy levels remain consistent across both groups. Notably, the higher happiness community tunes exhibit greater liveness, contrasting with the lower happiness group's louder compositions. Additionally, the lower happiness leans towards more speechiness. Tempo favors the higher happiness community by 5 points, while the lower happiness carries a 5-point advantage in positiveness. These nuances delineate distinct musical experiences between the two categories.
 
+The relations and groups between countries do not depend on happiness, they depend on the language spoken and proximity. The happiness differences among communities are a consequence of these groups.
+
+
+
+
+## Appendix
+### Did you know that? The ranking
+The original *Top-50-Oct-Jan.csv* file has data for 43,720 different songs. I wanted to add an appendix for the top songs in each feature.
+
+#### The song with the highest danceability
+<img src="https://github.com/Miquelc0ll/music-happiness-project/assets/84017268/c1b6d707-7018-4752-9657-5b9ebe75a05d" alt="Image Description" width="150">
+
+Нефертити - Ицык Цыпер (Nefertiti - Itsyk Tsyper)
+
+This song's danceability is 0.988. It was published the 13/10/2023 and has been in the Top-50 in weeks 2024W03 (Belarus and Ukraine) and 2024W04 (Belarus, Kazakhstan, Ukraine).
+
+#### The song with the highest acousticness
+<img src="https://github.com/Miquelc0ll/music-happiness-project/assets/84017268/c8722803-3610-4575-88f8-21652cfde925" alt="Captura" width="150px">
+
+Alive - Krolly Music
+
+This song's acousticness is 0.996. It was published the 15/06/2023 and was in the Bulgarian's Top-50 the 46th week of 2023.
+
+#### The longest song
+<img src="https://github.com/Miquelc0ll/music-happiness-project/assets/84017268/0d741000-c5b8-497e-8063-98d755ccc246" alt="ab67616d00001e02113bb5ff902822d6fc3db0e7" width="150px">
+
+Poesia Acústica 15 - Pineapple StormTv, Salve Malak, Mc Poze do Rodo, Luiz Lins, MC Hariel, Azzy, JayA Luuck, Oruam, Slipmami, MC Cabelinho
+This song's duration is 11:20. It was published the 24/12/2023 and has been in Portugal's Top-50 since then (2024 weeks 1, 2, 3 and 4).
+
+#### The most energetic song
+<img src="https://github.com/Miquelc0ll/music-happiness-project/assets/84017268/90a2bd7b-b42c-406e-a454-63a11bb5a9a2" alt="image" width="150px">
+
+ياحلوه يا مظلومه      ابو سراج  (Mazlouh - Abu Siraj)
+
+This song's energy is 0.992. It was published the 17/05/2010 and has been in Saudi Arabia's Top-50 in weeks 45, 47, 48, 51 and 52 in 2023; and weeks 2, 3 and 4 in 2024.
+
+#### The song with the most speechiness
+<img src="https://github.com/Miquelc0ll/music-happiness-project/assets/84017268/261bbc61-0ab9-4a94-8a26-23c29d1c2d2f" alt="artworks-QDajL9iEdBW6-0-t500x500" width="150px">
+
+CODE BARRE - Lacrim
+
+This song's speechiness is 0.811. It was uploaded the 8/11/2023 and has been in the French Top-50 in weeks 46 and 47 in 2023.
+
+#### The song with the highest tempo
+<img src="https://github.com/Miquelc0ll/music-happiness-project/assets/84017268/233f4c87-a68f-4c7b-badc-dd7b70ccf277" alt="ab67616d0000b273a0369b863f523411e35d817b" width="150px">
+
+Rhythm & Blues - Ayra Starr
+
+This song's tempo is 218. It was published the 12/09/2023 and was in the Nigeria's Top-50 in weeks 45 and 46 in 2023.
+
+#### The most positive song
+<img src="https://github.com/Miquelc0ll/music-happiness-project/assets/84017268/f1545d22-62ef-47f2-ade3-3c68cb5916f7" alt="26905adfd940a98412552c37a6ab57c4fda17d09" width="150px">
+
+Enfermera - Los Hermanos Flores
+
+This song's positiveness is 0.983. It was published the 9/5/1995 and entered the El Salvador's Top-50 the first week of 2024.
